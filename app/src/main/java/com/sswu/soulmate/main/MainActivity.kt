@@ -18,7 +18,6 @@ class MainActivity : ComponentActivity() {
             val mainNavigator = rememberMainNavigator(navigator)
 
             MainScreen(navigator = mainNavigator)
-
         }
     }
 }
