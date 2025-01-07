@@ -23,7 +23,7 @@ fun SoulmateButton(text: String, modifier: Modifier = Modifier) {
         text = text,
         style = TextStyle(
             fontFamily = FontFamily(Font(R.font.pretendard_bold)),
-            fontSize = 18.sp,
+            fontSize = 14.sp,
             color = White,
             textAlign = TextAlign.Center
         ),

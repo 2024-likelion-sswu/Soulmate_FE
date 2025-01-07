@@ -73,7 +73,7 @@ fun MyScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .padding(horizontal = 50.dp)
+                    .padding(horizontal = 30.dp)
                     .padding(bottom = 20.dp)
                     .background(BackgroundWhite, RoundedCornerShape(20.dp)),
                 verticalArrangement = Arrangement.Top,

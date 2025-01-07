@@ -15,15 +15,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -54,9 +53,10 @@ fun TestScreen(
     paddingValues: PaddingValues,
     modifier: Modifier = Modifier,
 ) {
+    val selectedOptions = remember { mutableStateListOf<Option?>(null, null, null, null, null) }
+
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -71,6 +71,7 @@ fun TestScreen(
             "개그 취향이 비슷했으면 좋겠다" to "문화 취향이 비슷했으면 좋겠다",
             "친구의 친구도 소개받고 싶다" to "친구와 나, 독립된 관계가 좋다"
         )
+
         Column(
             modifier = Modifier
                 .padding(paddingValues)
@@ -78,35 +79,34 @@ fun TestScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                modifier = Modifier
-                    .width(200.dp)
-                    .padding(top = 70.dp),
-                painter = painterResource(R.drawable.ic_logo),
-                contentDescription = null,
-                contentScale = ContentScale.Fit
-            )
-
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
+                    .statusBarsPadding()
                     .padding(horizontal = 20.dp)
-                    .padding(bottom = 50.dp),
-                verticalArrangement = Arrangement.spacedBy(5.dp),
+                    .padding(bottom = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(questions.size) { index ->
                     QuestionItem(
                         questionIndex = index + 1,
                         optionA = questions[index].first,
-                        optionB = questions[index].second
+                        optionB = questions[index].second,
+                        selectedOption = selectedOptions[index],
+                        onOptionSelected = { option ->
+                            selectedOptions[index] = option
+                        }
                     )
                 }
 
                 item {
-                    Spacer(modifier = Modifier
-                        .padding(bottom = 50.dp))
+                    Spacer(modifier = Modifier.padding(bottom = 50.dp))
                     SoulmateButton("테스트 결과")
+                }
+
+                item {
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
             }
         }
@@ -114,13 +114,16 @@ fun TestScreen(
 }
 
 @Composable
-fun QuestionItem(questionIndex: Int, optionA: String, optionB: String) {
-    var selectedOption by remember { mutableStateOf<Option?>(null) }
-
+fun QuestionItem(
+    questionIndex: Int,
+    optionA: String,
+    optionB: String,
+    selectedOption: Option?,
+    onOptionSelected: (Option) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
             .background(Color.White, RoundedCornerShape(16.dp))
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(5.dp)
@@ -134,33 +137,33 @@ fun QuestionItem(questionIndex: Int, optionA: String, optionB: String) {
             )
         )
 
+        Spacer(modifier = Modifier.width(16.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            TextButton(
+            TestButton(
                 text = optionA,
                 isSelected = selectedOption == Option.A,
-                modifier = Modifier.weight(1f)
-            ) {
-                selectedOption = Option.A
-            }
+                modifier = Modifier.weight(1f),
+                onClick = { onOptionSelected(Option.A) }
+            )
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            TextButton(
+            TestButton(
                 text = optionB,
                 isSelected = selectedOption == Option.B,
-                modifier = Modifier.weight(1f)
-            ) {
-                selectedOption = Option.B
-            }
+                modifier = Modifier.weight(1f),
+                onClick = { onOptionSelected(Option.B) }
+            )
         }
     }
 }
 
 @Composable
-fun TextButton(
+fun TestButton(
     text: String,
     isSelected: Boolean,
     modifier: Modifier,

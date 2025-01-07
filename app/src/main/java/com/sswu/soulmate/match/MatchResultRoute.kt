@@ -77,7 +77,7 @@ fun MatchResultScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .padding(horizontal = 50.dp)
+                    .padding(horizontal = 30.dp)
                     .padding(bottom = 20.dp)
                     .background(BackgroundWhite, RoundedCornerShape(20.dp)),
                 verticalArrangement = Arrangement.Top,
@@ -112,43 +112,17 @@ fun MatchResultScreen(
                     contentScale = ContentScale.Crop
                 )
 
-                Spacer(modifier = Modifier.height(50.dp))
-
-                Text(
-                    text = "성격",
-                    style = TextStyle(
-                        fontFamily = FontFamily(Font(R.font.pretendard_medium)),
-                        fontSize = 12.sp
-                    )
-                )
-
-                Text(
-                    text = "성격을 한 문장으로 설명",
-                    style = TextStyle(
-                        fontFamily = FontFamily(Font(R.font.pretendard_light)),
-                        fontSize = 12.sp
-                    )
-                )
-
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = "소울메이트",
-                    style = TextStyle(
-                        fontFamily = FontFamily(Font(R.font.pretendard_medium)),
-                        fontSize = 12.sp
-                    )
-                )
-
-                Text(
-                    text = "소울메이트 성격을 한 문장으로 설명",
+                    text = "테스트 유사도가 50% 이상이면\n상대의 정보를 열람할 수 있어요",
                     style = TextStyle(
                         fontFamily = FontFamily(Font(R.font.pretendard_light)),
                         fontSize = 12.sp
                     )
                 )
 
-                Spacer(modifier = Modifier.height(25.dp))
+                Spacer(modifier = Modifier.height(50.dp))
 
                 SoulmateButton(
                     text = "매칭 테스트 하기",
