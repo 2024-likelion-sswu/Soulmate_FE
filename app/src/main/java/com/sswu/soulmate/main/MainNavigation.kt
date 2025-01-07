@@ -13,6 +13,7 @@ import com.sswu.soulmate.home.navigateHome
 import com.sswu.soulmate.home.navigateMatch
 import com.sswu.soulmate.home.navigateMatchResult
 import com.sswu.soulmate.home.navigateMy
+import com.sswu.soulmate.home.navigateRegist
 import com.sswu.soulmate.main.MainBottomTab
 import com.sswu.soulmate.main.TabRoute
 import com.sswu.soulmate.test.navigateTest
@@ -46,7 +47,7 @@ class MainNavigation(
 
             MainBottomTab.Match -> navController.navigateMatch(navOptions = navOptions)
 
-            MainBottomTab.My -> navController.navigateMy(navOptions = navOptions)
+            MainBottomTab.My -> navController.navigateRegist(navOptions = navOptions)
         }
     }
 

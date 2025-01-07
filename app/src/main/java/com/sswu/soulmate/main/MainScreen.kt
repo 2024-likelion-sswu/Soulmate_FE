@@ -30,6 +30,7 @@ fun MainScreen(
                 )
                 myNavGraph(
                     paddingValues = innerPadding,
+                    navigateToMy = { navigator.navigateToMy() }
                 )
                 testNavGraph(
                     paddingValues = innerPadding,
@@ -38,7 +39,7 @@ fun MainScreen(
         },
         bottomBar = {
             MainBottomBar(
-                isVisible = navigator.shouldShowBottomBar(),
+                isVisible = true,
                 tabs = MainBottomTab.entries.toList(),
                 currentTab = navigator.currentTab,
                 onTabSelected = { selectedTab -> navigator.navigate(selectedTab) }

@@ -11,17 +11,17 @@ enum class MainBottomTab(
 ) {
     Match(
         icon = R.drawable.ic_match,
-        title = "match",
+        title = "매칭",
         route = com.sswu.soulmate.home.Match,
     ),
     Home(
         icon = R.drawable.ic_home,
-        title = "home",
+        title = "홈",
         route = com.sswu.soulmate.home.Home,
     ),
     My(
         icon = R.drawable.ic_my,
-        title = "mypage",
+        title = "내정보",
         route = com.sswu.soulmate.home.My,
     );
 
