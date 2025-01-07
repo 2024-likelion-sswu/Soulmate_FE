@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,4 +63,6 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.bundles.retrofit)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.bundles.lottie)
+    implementation(libs.coil.compose)
 }

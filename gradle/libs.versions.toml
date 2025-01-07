@@ -14,6 +14,13 @@ okhttp = "4.11.0"
 retrofit = "2.11.0"
 retrofitKotlinSerializationConverter = "1.0.0"
 kotlinxSerializationJson = "1.6.3"
+lottie = "6.0.0"
+toolsCore = "1.0.0-alpha10"
+accompanist = "0.24.2-alpha"
+monitorVersion = "1.7.2"
+playServicesCastFramework = "22.0.0"
+coil = "2.6.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -37,18 +44,31 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinSerializationConverter" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref= "lottie" }
+androidx-tools-core = { group = "androidx.privacysandbox.tools", name = "tools-core", version.ref = "toolsCore" }
+accompanist-navigation-animation = { group = "com.google.accompanist", name = "accompanist-navigation-animation", version.ref = "accompanist"}
+monitor = { group = "androidx.test", name = "monitor", version.ref = "monitorVersion" }
+play-services-cast-framework = { group = "com.google.android.gms", name = "play-services-cast-framework", version.ref = "playServicesCastFramework" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
 [bundles]
 okhttp = [
     "okhttp",
     "okhttp-logging-interceptor"
 ]
-
 retrofit = [
     "retrofit",
     "retrofit-kotlin-serialization-converter"
+]
+lottie = [
+    "lottie-compose",
+    "androidx-tools-core",
+    "accompanist-navigation-animation",
+    "monitor"
 ]
